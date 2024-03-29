@@ -1,18 +1,68 @@
+"use client";
+
 import styled from "styled-components";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function RegisterForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !password || !email) {
+      setError("all Fields are required");
+      return;
+    }
+    try {
+      const res = await fetch("api/register", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
+      if (res.ok) {
+        const form = e.target;
+        form.reset();
+      } else {
+        console.log("Userr registeration failed");
+      }
+    } catch (error) {}
+  };
+
   return (
     <>
       <Container>
         <h1>Register</h1>
-        <Form>
-          <Input type="text" placeholder="email" />
-          <Input type="password" placeholder="password" />
-          <button>Login</button>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="Full Name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            type="text"
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            type="password"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button>Register</button>
         </Form>
-        <Error>Error message</Error>
-        <Link href={"/register"}> Register</Link>
+        {error && <Error>{error}</Error>}
+        <Link href={"/"}>
+          Already have an account ? <span>Register</span>
+        </Link>
       </Container>
     </>
   );
