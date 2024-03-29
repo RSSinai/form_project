@@ -1,13 +1,11 @@
 "use client";
-
 import styled from "styled-components";
-import Link from "next/link";
-import LoginForm from "../../components/LoginForm";
+import RegisterForm from "../../../components/RegisterForm";
 
-export default function Home() {
+export default function Register() {
   return (
     <Main>
-      <LoginForm />
+      <RegisterForm />;
     </Main>
   );
 }
