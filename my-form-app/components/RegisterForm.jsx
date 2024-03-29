@@ -3,20 +3,38 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!name || !password || !email) {
       setError("all Fields are required");
       return;
     }
+
     try {
+      const resUserExists = await fetch("api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const { user } = await resUserExists.json();
+      if (user) {
+        setError("user already exists");
+        return;
+      }
+
       const res = await fetch("api/register", {
         method: "POST",
         headers: {
@@ -31,6 +49,7 @@ export default function RegisterForm() {
       if (res.ok) {
         const form = e.target;
         form.reset();
+        router.push("/");
       } else {
         console.log("Userr registeration failed");
       }

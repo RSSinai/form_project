@@ -1,17 +1,42 @@
+"use client";
+
 import styled from "styled-components";
 import Link from "next/link";
+import { useState } from "react";
+import {}
 
 export default function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("invalid");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+        
+    } catch (error) {
+        
+    }
+  };
+
   return (
     <>
       <Container>
         <h1>Log in</h1>
-        <Form>
-          <Input type="text" placeholder="email" />
-          <Input type="password" placeholder="password" />
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            type="password"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <button>Login</button>
         </Form>
-        <Error>Error message</Error>
+        {error && <Error>{error}</Error>}
         <Link href={"/register"}>
           Dont have an account ? <span>Register</span>
         </Link>
