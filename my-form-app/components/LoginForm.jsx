@@ -3,26 +3,41 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
-import {}
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("invalid");
+  const Router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-        
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (res.error) {
+        setError("Invalid Credentials");
+        return;
+      }
+
+      Router.replace("dashboard");
     } catch (error) {
-        
+      console.log(error);
     }
   };
 
   return (
     <>
       <Container>
-        <h1>Log in</h1>
+        <Logo>LOGO</Logo>
+        <h1>IVOverflow</h1>
         <Form onSubmit={handleSubmit}>
           <Input
             type="text"
@@ -68,4 +83,10 @@ const Form = styled.form`
   flex-direction: column;
   gap: 10px;
   width: 100%;
+`;
+
+const Logo = styled.div`
+  height: 50px;
+  width: 50px;
+  background-color: grey;
 `;
