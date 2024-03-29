@@ -5,14 +5,16 @@ export default function LoginForm() {
   return (
     <>
       <Container>
-        <h1>Enter the details</h1>
+        <h1>Log in</h1>
         <Form>
           <Input type="text" placeholder="email" />
           <Input type="password" placeholder="password" />
           <button>Login</button>
         </Form>
         <Error>Error message</Error>
-        <Link href={"/register"}> Register</Link>
+        <Link href={"/register"}>
+          Dont have an account ? <span>Register</span>
+        </Link>
       </Container>
     </>
   );
