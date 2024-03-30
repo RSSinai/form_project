@@ -1,6 +1,8 @@
 "use client";
+import styled from "styled-components";
 
 import NavBar from "../../../components/NavBar";
+import QuestionList from "../../../components/QuestionList";
 import UserQuestionsModal from "../../../components/UserQuestionModal";
 import { React, useState } from "react";
 export default function Dashboard() {
@@ -9,10 +11,15 @@ export default function Dashboard() {
   return (
     <>
       <NavBar setOpenModal={setOpenModal} />
-      <UserQuestionsModal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-      />
+      <Container>
+        <UserQuestionsModal
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+        />
+        <QuestionList />
+      </Container>
     </>
   );
 }
+
+const Container = styled.div``;

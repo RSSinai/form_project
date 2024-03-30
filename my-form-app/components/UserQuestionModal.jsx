@@ -14,7 +14,7 @@ export default function UserQuestionsModal({ open, onClose }) {
         <input></input>
         <div> Topic Description</div>
         <textarea></textarea>
-        <div>Tags separated by,</div>
+        <div>Tags separated by ,</div>
         <input></input>
         <Submit>Submit</Submit>
         <CloseBtn onClick={onClose}>X</CloseBtn>
