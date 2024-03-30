@@ -5,10 +5,10 @@ import User from "../../../../models/user";
 
 export async function POST(req) {
   try {
-    const { name, email, password } = await req.json();
+    const { name, nickname, email, password } = await req.json();
     const hashedPassword = sha512.create(password);
     await connectMongoDB();
-    await User.create({ name, email, password: hashedPassword });
+    await User.create({ name, nickname, email, password: hashedPassword });
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {

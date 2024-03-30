@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("invalid");
+  const [error, setError] = useState("");
   const Router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -89,4 +89,7 @@ const Logo = styled.div`
   height: 50px;
   width: 50px;
   background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
