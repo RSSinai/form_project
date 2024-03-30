@@ -2,11 +2,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-const Topic = styled.div`
-  border: 1px solid;
-  width: 100%;
-`;
-
 export default function TopicsList() {
   const [topics, setTopics] = useState([]);
 
@@ -33,16 +28,52 @@ export default function TopicsList() {
 
   return (
     <>
-      {topics.map((topic) => (
-        <div key={topic._id}>
-          <Topic>
-            <div>{topic.title}</div>
-            <div>{topic.description}</div>
-            <Link href={"./"}>Open</Link>
-            <div>{topic.tags}</div>
-          </Topic>
-        </div>
-      ))}
+      <Container>
+        {topics.map((topic) => (
+          <div key={topic._id}>
+            <Topic>
+              <SideInfo>Numbers</SideInfo>
+              <Content>
+                <div>Title: {topic.title}</div>
+                <div>Question: {topic.description}</div>
+                <div>Tags: {topic.tags}</div>
+                <Link href={`./question/${topic._id}`}>Open</Link>
+              </Content>
+              <Stamp>Author: </Stamp>
+            </Topic>
+          </div>
+        ))}
+      </Container>
     </>
   );
 }
+
+const Topic = styled.div`
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+  justify-content: space-between;
+`;
+
+const SideInfo = styled.div`
+  border: 1px solid;
+`;
+
+const Content = styled.div`
+  width: 80%;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 70%;
+  padding: 20px;
+  box-sizing: border-box;
+`;
+
+const Stamp = styled.div`
+  border: 1px solid;
+`;

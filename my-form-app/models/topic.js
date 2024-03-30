@@ -4,6 +4,8 @@ const topicSchema = new Schema(
   {
     title: String,
     description: String,
+    tags: Array,
+    comments: Array,
   },
   {
     timestamps: true,
