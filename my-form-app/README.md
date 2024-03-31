@@ -2,6 +2,13 @@
 
 ## IVOverflow project
 
+# Important notes:
+1. All work was done with github , its open to see all the commits i did during this work and all the changes i did (and what time i worked on this :-)
+2. I worked with branches to be organized, merged PR only after i was sure they didn't break things.
+3. I upgraded the CSS at the last step, theres a branch named "first-styling" of prior styling as requested in the instructions
+4. in order to check this program there's a setup of DB that is needed (MongoDB) for ease of use i did a video to see the worked that was done : [click here for video]([https://www.example.com](https://youtu.be/B1fVwyAh-_0))
+5. 
+
 # Overview
 
 This project is a full-stack web application designed to facilitate a question-and-answer platform where users can ask questions, provide answers, and vote on the answers they find most helpful. It features a robust authentication system, categorized questions, and an interactive voting system.
