@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("invalid");
+  const [error, setError] = useState("");
   const Router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -75,6 +75,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
+<<<<<<< HEAD
   height: 60px; /* Adjusted size for visibility */
   width: 60px; /* Maintain aspect ratio */
   background-color: #3498db; /* Theme color for consistency */
@@ -123,4 +124,12 @@ const Error = styled.div`
   width: 90%; /* Responsive width */
   max-width: 300px; /* Maximum width to match form elements */
   text-align: center; /* Center text for better readability */
+=======
+  height: 50px;
+  width: 50px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
 `;

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -42,6 +43,7 @@ export default function RegisterForm() {
         },
         body: JSON.stringify({
           name,
+          nickname,
           email,
           password,
         }),
@@ -65,6 +67,11 @@ export default function RegisterForm() {
             type="text"
             placeholder="Full Name"
             onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            type="text"
+            placeholder="Nickname"
+            onChange={(e) => setNickname(e.target.value)}
           />
           <Input
             type="text"

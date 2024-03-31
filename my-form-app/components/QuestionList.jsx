@@ -32,7 +32,11 @@ export default function TopicsList() {
         {topics.map((topic) => (
           <div key={topic._id}>
             <Topic>
+<<<<<<< HEAD
               <SideInfo>0</SideInfo>
+=======
+              <SideInfo>Numbers</SideInfo>
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
               <Content>
                 <div>Title: {topic.title}</div>
                 <div>Question: {topic.description}</div>
@@ -42,9 +46,15 @@ export default function TopicsList() {
                     <Tag key={index}>{tag}</Tag>
                   ))}
                 </TagsContainer>
+<<<<<<< HEAD
                 <Link href={`./question/${topic._id}`}>Open topic</Link>
               </Content>
               <Stamp>Date: {topic.createdAt} </Stamp>
+=======
+                <Link href={`./question/${topic._id}`}>Open</Link>
+              </Content>
+              <Stamp>Author: </Stamp>
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
             </Topic>
           </div>
         ))}
@@ -54,6 +64,7 @@ export default function TopicsList() {
 }
 
 const Topic = styled.div`
+<<<<<<< HEAD
   border: 1px solid #e1e1e1; /* Lighter border color for a softer look */
   display: flex;
   flex-direction: row;
@@ -79,6 +90,21 @@ const Content = styled.div`
   width: 85%; /* Adjusted width for balance */
   margin: 0 10px; /* Adjust margins for spacing */
   overflow: hidden; /* Hide overflow */
+=======
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+  justify-content: space-between;
+`;
+
+const SideInfo = styled.div`
+  border: 1px solid;
+`;
+
+const Content = styled.div`
+  width: 80%;
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
 `;
 
 const Container = styled.div`
@@ -86,29 +112,46 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: auto;
+<<<<<<< HEAD
   width: 80%; /* Adjust width for a better fit */
   max-width: 960px; /* Max width for large screens */
+=======
+  width: 70%;
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
   padding: 20px;
   box-sizing: border-box;
 `;
 
 const Stamp = styled.div`
+<<<<<<< HEAD
   font-size: 0.8rem; /* Smaller font size for subtlety */
   color: #707070; /* Soft color for the stamp */
   margin: 0 10px; /* Adjust margin for alignment */
+=======
+  border: 1px solid;
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
 `;
 
 const Tag = styled.div`
   background-color: #3498db;
   color: #fff;
+<<<<<<< HEAD
   padding: 5px 10px; /* Adjust padding for better readability */
   border-radius: 5px;
   font-size: 0.8rem; /* Smaller font size for a refined look */
+=======
+  padding: 3px 8px;
+  border-radius: 5px;
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
 `;
 
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+<<<<<<< HEAD
   gap: 10px; /* Increased gap for better separation */
   margin-top: 10px; /* Top margin for spacing from content */
+=======
+  gap: 5px;
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
 `;

@@ -34,7 +34,11 @@ export default function FullTopicForm({
       setIsSubmitting(false);
     }
   };
+<<<<<<< HEAD
 
+=======
+  console.log("!!!commet", comments);
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
   return (
     <div>
       <PageWrapper>
@@ -52,6 +56,7 @@ export default function FullTopicForm({
           <h2>Answers</h2>
           {comments.map((comment, index) => (
             <AnswerContainer key={index}>
+<<<<<<< HEAD
               <Rating>
                 <button onClick={() => handleRatingChange(comment.rating + 1)}>
                   +
@@ -59,15 +64,22 @@ export default function FullTopicForm({
                 {comment.rating}
                 <button>-</button>
               </Rating>
+=======
+              <Rating>{comment.rating}</Rating>
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
               <Answer>{comment.answer}</Answer>
             </AnswerContainer>
           ))}
           <HR />
+<<<<<<< HEAD
           <input
             value={answer}
             onChange={handleAnswerChange}
             placeholder="Reply an answer..."
           ></input>
+=======
+          <input value={answer} onChange={handleAnswerChange}></input>
+>>>>>>> f46b9bd67aeac16318d79f1e8fdd1647720f3a77
           <button onClick={submitAnswer} disabled={isSubmitting}>
             Answer
           </button>
