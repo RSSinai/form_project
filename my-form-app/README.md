@@ -41,7 +41,7 @@ Explanation of the voting system and how users can vote on answers.
 
 ## File Structure
 
-app
+```app
 ├── Providers.js
 ├── api
 │ ├── auth
@@ -68,3 +68,4 @@ app
 ├── register
 │ └── page.jsx
 └── registry.js
+```
