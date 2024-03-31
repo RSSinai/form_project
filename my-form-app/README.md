@@ -20,7 +20,12 @@
 7. ~~Add question categories~~
 8. ~~Add answer form~~
 9. ~~Submit form to database~~
-10. ~~Add answer voting~~ (Needs improvement) 
+10. ~~Add answer voting~~ (Needs improvement)
+
+# Things i would do if i had more time:
+1. Filter topics with the input bar in the navbar
+2. disabling register when logged in
+3. modal popup bug when on an open ticket
 
 # Overview
 
