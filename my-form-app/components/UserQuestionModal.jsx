@@ -1,22 +1,57 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export default function UserQuestionsModal({ open, onClose }) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [tags, setTags] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const questionData = {
+      title,
+      description,
+      tags: tags.split(",").map((tag) => tag.trim()),
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/api/topics", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(questionData),
+      });
+
+      if (response.ok) {
+        alert("Question submitted successfully!");
+        onClose();
+      } else {
+        alert("Failed to submit. try again.");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+
   if (!open) {
     return null;
   }
   return (
     <PageWrapper>
-      <ModalContainer>
+      <ModalContainer onSubmit={handleSubmit}>
         <h2>Ask Question</h2>
         <div>Title</div>
-        <input></input>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <div> Topic Description</div>
-        <textarea></textarea>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
         <div>Tags separated by ,</div>
-        <input></input>
-        <Submit>Submit</Submit>
+        <input value={tags} onChange={(e) => setTags(e.target.value)} />
+        <Submit type="submit">Submit</Submit>
         <CloseBtn onClick={onClose}>X</CloseBtn>
       </ModalContainer>
     </PageWrapper>
@@ -30,7 +65,7 @@ const PageWrapper = styled.div`
   height: 100%;
 `;
 
-const ModalContainer = styled.div`
+const ModalContainer = styled.form`
   gap: 10px;
   max-width: 600px;
   width: 100%;

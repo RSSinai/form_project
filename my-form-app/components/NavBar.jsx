@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import styled from "styled-components";
+import { signOut } from "next-auth/react";
 
 export default function NavBar({ setOpenModal }) {
   return (
@@ -11,7 +12,7 @@ export default function NavBar({ setOpenModal }) {
           <Input placeholder="Search"></Input>
           <button onClick={() => setOpenModal(true)}>Ask Question!</button>
         </Search>
-        <button>Logout</button>
+        <button onClick={() => signOut({ callbackUrl: "/" })}>Logout</button>
       </Container>
     </>
   );

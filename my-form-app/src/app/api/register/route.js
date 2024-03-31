@@ -1,12 +1,13 @@
-const { sha512 } = require("js-sha512");
+// const { sha512 } = require("js-sha512");
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "../../../../lib/mongodb";
 import User from "../../../../models/user";
+import bcrypt from "bcryptjs";
 
 export async function POST(req) {
   try {
     const { name, nickname, email, password } = await req.json();
-    const hashedPassword = sha512.create(password);
+    const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
     await User.create({ name, nickname, email, password: hashedPassword });
 
