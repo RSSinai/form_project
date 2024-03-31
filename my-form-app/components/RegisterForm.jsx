@@ -89,25 +89,55 @@ export default function RegisterForm() {
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  flex-direction: column;
-  gap: 5px;
-  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer, modern shadow */
+  border-radius: 8px; /* Rounded corners */
+  gap: 20px; /* Increased gap for clarity */
+  padding: 40px; /* More breathing space */
+  background-color: #ffffff; /* Clean white background */
+  max-width: 400px; /* Optimal form width */
+  width: 100%; /* Responsive */
+  margin: auto; /* Centered on page */
 `;
 
 const Input = styled.input`
-  width: 100%;
+  padding: 10px; /* Comfortable text input */
+  border: 1px solid #ccc; /* Subtle, stylish border */
+  border-radius: 5px; /* Rounded edges */
+  width: calc(100% - 20px); /* Adjust width for padding */
+  margin-bottom: 10px; /* Space between inputs */
+`;
+
+const Button = styled.button`
+  background-color: #3498db; /* Consistent button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Indicate clickable */
+  transition: background-color 0.2s; /* Smooth hover effect */
+
+  &:hover {
+    background-color: #297ab1; /* Darken on hover */
+  }
 `;
 
 const Error = styled.div`
-  background-color: red;
-  justify-content: flex-start;
+  color: white; /* Error text color */
+  background-color: #e74c3c; /* Alert color for errors */
+  padding: 10px;
+  border-radius: 5px; /* Smooth edges */
+  width: 90%; /* Responsive */
+  max-width: 300px; /* Match input width */
+  text-align: center; /* Center error message */
 `;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  gap: 15px; /* Spacing between form elements */
+  width: 90%; /* Form width */
+  max-width: 350px; /* Max width for larger screens */
 `;
