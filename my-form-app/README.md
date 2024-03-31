@@ -9,6 +9,19 @@
 4. in order to check this program there's a setup of DB that is needed (MongoDB) for ease of use i did a video to see the worked that was done : [click here for video](https://youtu.be/B1fVwyAh-_0)
 5. 
 
+# Tasks Done: 
+
+1. ~~Create database~~
+2. ~~Create login page with form~~
+3. ~~Create login service~~
+4. ~~Create question from~~
+5. ~~Submit form to database~~
+6. ~~Create question page~~
+7. ~~Add question categories~~
+8. ~~Add answer form~~
+9. ~~Submit form to database~~
+10. ~~Add answer voting~~ (Needs improvement) 
+
 # Overview
 
 This project is a full-stack web application designed to facilitate a question-and-answer platform where users can ask questions, provide answers, and vote on the answers they find most helpful. It features a robust authentication system, categorized questions, and an interactive voting system.
