@@ -8,7 +8,7 @@ export default function FullTopicForm({ id, title, description, tags }) {
   const router = useRouter();
 
   const [topics, setTopics] = useState([]);
-  const [topicTags, setTopicTags] = useState([]); // State to hold tags of the current topic
+  const [topicTags, setTopicTags] = useState([]);
 
   useEffect(() => {
     const fetchTopics = async () => {
@@ -32,9 +32,9 @@ export default function FullTopicForm({ id, title, description, tags }) {
   }, []);
 
   useEffect(() => {
-    const currentTopic = topics.find((topic) => topic.id === id); // Find the current topic based on id
+    const currentTopic = topics.find((topic) => topic.id === id);
     if (currentTopic) {
-      setTopicTags(currentTopic.tags); // Set the tags of the current topic
+      setTopicTags(currentTopic.tags);
     }
   }, [topics, id]);
 
@@ -51,7 +51,7 @@ export default function FullTopicForm({ id, title, description, tags }) {
           <TagsContainer>
             Tags:
             {tags.map((tag, index) => (
-              <Tag key={index}>{tag}</Tag> // Render each tag of the current topic
+              <Tag key={index}>{tag}</Tag>
             ))}
           </TagsContainer>
           <Submit>Submit</Submit>
