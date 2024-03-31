@@ -34,6 +34,7 @@ export default function FullTopicForm({
       setIsSubmitting(false);
     }
   };
+
   console.log("!!!commet", comments);
   return (
     <div>
@@ -52,11 +53,23 @@ export default function FullTopicForm({
           <h2>Answers</h2>
           {comments.map((comment, index) => (
             <AnswerContainer key={index}>
+              <Rating>
+                <button onClick={() => handleRatingChange(comment.rating + 1)}>
+                  +
+                </button>
+                {comment.rating}
+                <button>-</button>
+              </Rating>
               <Rating>{comment.rating}</Rating>
               <Answer>{comment.answer}</Answer>
             </AnswerContainer>
           ))}
           <HR />
+          <input
+            value={answer}
+            onChange={handleAnswerChange}
+            placeholder="Reply an answer..."
+          ></input>
           <input value={answer} onChange={handleAnswerChange}></input>
           <button onClick={submitAnswer} disabled={isSubmitting}>
             Answer
