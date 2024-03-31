@@ -59,34 +59,74 @@ export default function LoginForm() {
     </>
   );
 }
-
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  flex-direction: column;
-  gap: 5px;
-  padding: 20px;
-`;
-
-const Input = styled.input`
-  width: 100%;
-`;
-
-const Error = styled.div`
-  background-color: red;
-  justify-content: flex-start;
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow for a modern look */
+  border-radius: 8px; /* Rounded corners for the container */
+  gap: 20px; /* Increased gap for better spacing */
+  padding: 40px; /* Increased padding for more breathing space */
+  background-color: #ffffff; /* Light background for contrast */
+  max-width: 400px; /* Maximum width for form container */
+  width: 100%; /* Ensure it's responsive */
+  margin: auto; /* Center the form on the page */
 `;
 
 const Logo = styled.div`
+<<<<<<< Updated upstream
   height: 50px;
   width: 50px;
   background-color: grey;
+=======
+  height: 60px; /* Adjusted size for visibility */
+  width: 60px; /* Maintain aspect ratio */
+  background-color: #3498db; /* Theme color for consistency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Circular logo */
+  font-size: 24px; /* Adjusted font size for logo text */
+  color: white; /* Logo text color */
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Increased gap for clarity */
+  width: 90%; /* Adjust width for form control */
+  max-width: 300px; /* Maximum width to ensure form elements are not too wide */
+`;
+
+const Input = styled.input`
+  padding: 10px; /* Padding for better text visibility */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners for input fields */
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+`;
+
+const Button = styled.button`
+  background-color: #3498db; /* Theme color for consistency */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Cursor indication for interaction */
+  transition: background-color 0.2s; /* Smooth transition for hover effect */
+
+  &:hover {
+    background-color: #297ab1; /* Darker shade on hover for interaction feedback */
+  }
+`;
+
+const Error = styled.div`
+  color: white; /* Text color for visibility */
+  background-color: #e74c3c; /* Error indication color */
+  padding: 10px; /* Padding for text */
+  border-radius: 5px; /* Rounded corners for soft appearance */
+  width: 90%; /* Responsive width */
+  max-width: 300px; /* Maximum width to match form elements */
+  text-align: center; /* Center text for better readability */
+>>>>>>> Stashed changes
 `;
