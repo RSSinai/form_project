@@ -20,7 +20,7 @@ const getTopicById = async (id) => {
 export default async function Question({ params }) {
   const { id } = params;
   const { topic } = await getTopicById(id);
-  const { title, description, tags } = topic;
+  const { title, description, tags, comments } = topic;
 
   return (
     <>
@@ -31,6 +31,7 @@ export default async function Question({ params }) {
         description={description}
         topic={topic}
         tags={tags}
+        comments={comments}
       />
     </>
   );

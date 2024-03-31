@@ -4,40 +4,37 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function FullTopicForm({ id, title, description, tags }) {
+export default function FullTopicForm({
+  id,
+  title,
+  description,
+  tags,
+  comments,
+}) {
   const router = useRouter();
+  const [answer, setAnswer] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [topics, setTopics] = useState([]);
-  const [topicTags, setTopicTags] = useState([]);
+  const handleAnswerChange = (event) => {
+    setAnswer(event.target.value);
+  };
 
-  useEffect(() => {
-    const fetchTopics = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/api/topics", {
-          cache: "no-store",
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch topics");
-        }
-
-        const data = await res.json();
-        setTopics(data.topics);
-      } catch (error) {
-        console.log("Error loading topics: ", error);
-      }
-    };
-
-    fetchTopics();
-  }, []);
-
-  useEffect(() => {
-    const currentTopic = topics.find((topic) => topic.id === id);
-    if (currentTopic) {
-      setTopicTags(currentTopic.tags);
+  const submitAnswer = async () => {
+    setIsSubmitting(true);
+    try {
+      fetch(`http://localhost:3000/api/topics/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, answer }),
+      });
+    } catch (error) {
+    } finally {
+      setIsSubmitting(false);
     }
-  }, [topics, id]);
-
+  };
+  console.log("!!!commet", comments);
   return (
     <div>
       <PageWrapper>
@@ -45,16 +42,25 @@ export default function FullTopicForm({ id, title, description, tags }) {
           <h2>{title}</h2>
           <h4>asked by date by name</h4>
           <HR />
-          <input></input>
           <div>{description}</div>
-          <textarea></textarea>
           <TagsContainer>
             Tags:
             {tags.map((tag, index) => (
               <Tag key={index}>{tag}</Tag>
             ))}
           </TagsContainer>
-          <Submit>Submit</Submit>
+          <h2>Answers</h2>
+          {comments.map((comment, index) => (
+            <AnswerContainer key={index}>
+              <Rating>{comment.rating}</Rating>
+              <Answer>{comment.answer}</Answer>
+            </AnswerContainer>
+          ))}
+          <HR />
+          <input value={answer} onChange={handleAnswerChange}></input>
+          <button onClick={submitAnswer} disabled={isSubmitting}>
+            Answer
+          </button>
         </ModalContainer>
       </PageWrapper>
     </div>
@@ -96,7 +102,7 @@ const Submit = styled.button`
 `;
 
 const HR = styled.hr`
-  background-color: black; /* Sets the background color of the hr */
+  background-color: black;
   height: 1px;
   border: none;
   margin: 5px;
@@ -113,4 +119,23 @@ const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+`;
+
+const Answer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid black;
+  width: fit-content;
+`;
+
+const AnswerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+  gap: 10px;
+`;
+
+const Rating = styled.h2`
+  display: flex;
+  flex-direction: row;
 `;
