@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const QuestionComp = () => {
+import { useState, useEffect } from "react";
+
+const QuestionComp = ({ topicId }) => {
+  console.log("topicId", topicId);
   return (
     <div>
       <PageWrapper>

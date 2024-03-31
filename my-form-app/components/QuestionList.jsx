@@ -36,7 +36,12 @@ export default function TopicsList() {
               <Content>
                 <div>Title: {topic.title}</div>
                 <div>Question: {topic.description}</div>
-                <div>Tags: {topic.tags}</div>
+                <TagsContainer>
+                  Tags:
+                  {topic.tags.map((tag, index) => (
+                    <Tag key={index}>{tag}</Tag>
+                  ))}
+                </TagsContainer>
                 <Link href={`./question/${topic._id}`}>Open</Link>
               </Content>
               <Stamp>Author: </Stamp>
@@ -76,4 +81,17 @@ const Container = styled.div`
 
 const Stamp = styled.div`
   border: 1px solid;
+`;
+
+const Tag = styled.div`
+  background-color: #3498db;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 5px;
+`;
+
+const TagsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 `;
